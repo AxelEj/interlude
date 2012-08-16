@@ -1,12 +1,12 @@
 package la2.game.task;
 
+import task.Task;
 import la2.game.AuthClient;
 import la2.game.GameClient;
 import la2.game.net.client.auth.RequestAuthLoginPacket;
 import la2.game.net.server.CharacterListPacket;
 import la2.game.net.server.auth.LoginFailPacket;
 import la2.game.net.server.auth.LoginSuccessPacket;
-import la2.task.Task;
 import la2.util.SessionKey;
 
 public class AuthTask extends Task<GameClient> {

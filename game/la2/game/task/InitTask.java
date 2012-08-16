@@ -1,9 +1,9 @@
 package la2.game.task;
 
+import task.Task;
 import la2.game.GameClient;
 import la2.game.net.client.ProtocolVersionPacket;
 import la2.game.net.server.CryptInitPacket;
-import la2.task.Task;
 
 public class InitTask extends Task<GameClient> {
 	private ProtocolVersionPacket packet;

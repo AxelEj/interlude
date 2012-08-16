@@ -3,8 +3,6 @@ package la2.game;
 import java.nio.channels.SocketChannel;
 import java.util.Random;
 
-import la2.util.Config;
-
 import net.Factory;
 import net.Filter;
 import net.SelectionClient;
@@ -22,21 +20,11 @@ public class GameServer
 		return instance;
 	}
 
-	private int id;
-	
-	private int ageLimit;
-	
-	private int limit;
-	
 	private int online;
-	
-	private boolean pvp;
-	
-	private boolean test;
 	
 	private byte[][] keys;
 	
-	public GameServer(Config config,String host,int port) {
+	public GameServer(String host,int port) {
 		super(host,port);
 		
 		setFactory(this);
@@ -44,18 +32,6 @@ public class GameServer
 		setFilter(this);
 		
 		instance = this;
-		
-		id = config.getInt("SERVER_ID");
-		
-		ageLimit = config.getInt("AGE_LIMIT");
-		
-		limit = config.getInt("LIMIT");
-		
-		online = 0;
-		
-		pvp = config.getBoolean("PVP");
-		
-		test = config.getBoolean("TEST");
 		
 		keys = new byte[20][16];//TODO config size
 		
@@ -90,29 +66,8 @@ public class GameServer
 	public SelectionClient create() {
 		return new GameClient(keys[random.nextInt(20)]);
 	}
-
-	public int getServerId() {
-		return id;
-	}
-
-	public int getAgeLimit() {
-		return ageLimit;
-	}
-
-	public int getLimit() {
-		return limit;
-	}
-
+	
 	public int getOnline() {
 		return online;
 	}
-
-	public boolean isPvp() {
-		return pvp;
-	}
-
-	public boolean isTest() {
-		return test;
-	}
-
 }
