@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Game test" default="compile" basedir="../">
+	<property name="src" location="game" />
+		
+	<property name="lib" location="lib" />
+		
+	<property name="build" location="build/game" />
+	
+	<path id="classpath">
+		<fileset dir="${lib}">
+			<include name="util.jar" />
+			<include name="mysql-connector-java-5.1.21-bin.jar" />
+		</fileset>
+	</path>
+				
+	<target name="compile">
+		<delete dir="${build}" />
+			
+		<mkdir dir="${build}" />
+		
+		<mkdir dir="${build}/classes" />
+			
+		<javac srcdir="util" destdir="${build}/classes" optimize="on" debug="on" source="1.7" target="1.7" nowarn="off" includeantruntime="false" deprecation="yes">
+				<compilerarg value="-Xlint" />
+				<classpath refid="classpath" />
+		</javac>
+			
+		<javac srcdir="${src}" destdir="${build}/classes" optimize="on" debug="on" source="1.7" target="1.7" nowarn="off" includeantruntime="false" deprecation="yes">
+			<compilerarg value="-Xlint" />
+			<classpath refid="classpath" />
+		</javac>
+		
+		<jar destfile="${build}/auth.jar">
+			<fileset dir="${build}/classes" />
+		</jar>
+		
+		<copy file="dist/auth.bat" todir="${build}" overwrite="true" />
+		
+		<copy todir="${build}">
+		    <fileset dir="lib"/>
+		</copy>
+		
+		<copy file="dist/auth.bat" todir="${build}" overwrite="true" />
+		
+		<copy file="${src}/auth.config.dat" todir="${build}" overwrite="true" />
+	</target>
+	
+</project>
