@@ -1,5 +1,6 @@
 package la2.game.net.server.auth;
 
+import la2.game.GameConfig;
 import la2.game.GameServer;
 import net.io.SendablePacket;
 
@@ -18,17 +19,17 @@ public class InitServerPacket extends SendablePacket {
 	
 	
 	public InitServerPacket(GameServer server) {
-		id = server.getServerId();
+		id = GameConfig.SERVER_ID;
 		
-		ageLimit = server.getAgeLimit();
+		ageLimit = GameConfig.AGE_LIMIT;
 		
-		limit = server.getLimit();
+		limit = GameConfig.LIMIT;
 		
 		online = server.getOnline();
 		
-		pvp = server.isPvp();
+		pvp = GameConfig.PVP;
 		
-		test = server.isTest();
+		test = GameConfig.TEST;
 	}
 	
 	@Override

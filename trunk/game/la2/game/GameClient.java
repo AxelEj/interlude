@@ -2,6 +2,8 @@ package la2.game;
 
 import java.nio.ByteBuffer;
 
+import task.TaskManager;
+
 import la2.game.net.client.ProtocolVersionPacket;
 import la2.game.net.client.auth.RequestAuthLoginPacket;
 import la2.game.task.AuthTask;

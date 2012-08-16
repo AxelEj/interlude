@@ -1,8 +1,11 @@
 package la2.game.task;
 
-import la2.game.GameClient;
-import la2.task.TaskExecutor;
-import la2.task.TaskManager;
+import java.util.concurrent.Executors;
+
+import task.TaskExecutor;
+import task.TaskManager;
+import task.TaskScheduler;
+import la2.game.GameConfig;
 
 public class GameExecutor {
 	private static GameExecutor instance;
@@ -11,15 +14,19 @@ public class GameExecutor {
 		return instance;
 	}
 	
-	private Task<GameClient> executor;
+	private TaskExecutor executor;
 	
-	public GameExecutor(int count) {
-		executor = new TaskExecutor<GameClient>(count);
+	private TaskScheduler scheduler;
+	
+	public GameExecutor() {
+		executor = new TaskExecutor(Executors.newFixedThreadPool(GameConfig.TASK_THREADS_COUNT));
+		
+		scheduler = new TaskScheduler(GameConfig.TASK_SCHEDULER_THREADS_COUNT);
 		
 		instance = this;
 	}
 	
-	public TaskManager<GameClient> create(GameClient client) {
-		return executor.create(client);
+	public <Client> TaskManager<Client> create(Client client) {
+		return new TaskManager<Client>(client, executor, scheduler);
 	}
 }

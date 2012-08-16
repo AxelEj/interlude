@@ -20,7 +20,7 @@
 		
 		<mkdir dir="${build}/classes" />
 			
-		<javac srcdir="util" destdir="${build}/classes" optimize="on" debug="on" source="1.7" target="1.7" nowarn="off" includeantruntime="false" deprecation="yes">
+		<javac srcdir="la2util" destdir="${build}/classes" optimize="on" debug="on" source="1.7" target="1.7" nowarn="off" includeantruntime="false" deprecation="yes">
 				<compilerarg value="-Xlint" />
 				<classpath refid="classpath" />
 		</javac>
@@ -30,19 +30,17 @@
 			<classpath refid="classpath" />
 		</javac>
 		
-		<jar destfile="${build}/auth.jar">
+		<jar destfile="${build}/game.jar">
 			<fileset dir="${build}/classes" />
 		</jar>
 		
-		<copy file="dist/auth.bat" todir="${build}" overwrite="true" />
+		<copy file="dist/game.bat" todir="${build}" overwrite="true" />
 		
 		<copy todir="${build}">
 		    <fileset dir="lib"/>
 		</copy>
 		
-		<copy file="dist/auth.bat" todir="${build}" overwrite="true" />
-		
-		<copy file="${src}/auth.config.dat" todir="${build}" overwrite="true" />
+		<copy file="${src}/game.config.dat" todir="${build}" overwrite="true" />
 	</target>
 	
 </project>
