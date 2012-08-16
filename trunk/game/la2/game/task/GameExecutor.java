@@ -11,7 +11,7 @@ public class GameExecutor {
 		return instance;
 	}
 	
-	private TaskExecutor<GameClient> executor;
+	private Task<GameClient> executor;
 	
 	public GameExecutor(int count) {
 		executor = new TaskExecutor<GameClient>(count);

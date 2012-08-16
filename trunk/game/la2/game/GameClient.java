@@ -8,7 +8,6 @@ import la2.game.task.AuthTask;
 import la2.game.task.GameExecutor;
 import la2.game.task.InitTask;
 import la2.game.task.LogoutTask;
-import la2.task.TaskManager;
 import la2.util.GameCrypt;
 
 import net.SelectionClient;
